@@ -6,20 +6,22 @@
   <title>Food Delivery Website</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
+      background: linear-gradient(135deg, #f9f9f9, #eaeaea);
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     
     header {
-      background-color: #333;
+      background-color: #ff6347; /* Tomato color */
       color: white;
       text-align: center;
-      padding: 10px;
+      padding: 20px;
       width: 100%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     
     .menu {
@@ -27,76 +29,154 @@
       justify-content: space-around;
       flex-wrap: wrap;
       padding: 20px;
-      max-width: 800px;
+      max-width: 1200px;
     }
     
     .item {
       border: 1px solid #ddd;
-      padding: 10px;
-      margin: 10px;
+      padding: 15px;
+      margin: 15px;
       text-align: center;
-      width: 200px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-      border-radius: 5px;
+      width: 220px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      transition: transform 0.2s;
+      background: white;
+    }
+
+    .item:hover {
+      transform: scale(1.05); /* Slight zoom on hover */
     }
     
     .item img {
       max-width: 100%;
-      border-radius: 5px;
+      border-radius: 8px;
     }
     
     .price {
       font-weight: bold;
+      color: #ff6347; /* Tomato color */
+      margin: 10px 0;
     }
     
     .add-to-cart {
-      background-color: #333;
+      background-color: #28a745; /* Green color */
       color: white;
       border: none;
-      padding: 5px 10px;
+      padding: 10px;
       cursor: pointer;
       border-radius: 5px;
       transition: background-color 0.3s;
+      font-weight: bold;
     }
 
     .add-to-cart:hover {
-      background-color: #555;
+      background-color: #218838; /* Darker green on hover */
     }
 
     .cart {
       border: 1px solid #ddd;
-      padding: 10px;
+      padding: 15px;
       position: fixed;
       top: 150px;
       right: 40px;
-      width: 250px;
+      width: 300px;
       background: white; 
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
     }
 
     .clear-cart {
-      background-color: #ff4c4c;
+      background-color: #dc3545; /* Red color */
       border: none;
       color: white;
-      padding: 5px 10px;
+      padding: 10px;
       cursor: pointer;
       border-radius: 5px;
       transition: background-color 0.3s;
+      font-weight: bold;
     }
 
     .clear-cart:hover {
-      background-color: #ff1c1c;
+      background-color: #c82333; /* Darker red on hover */
+    }
+
+    .customer-details {
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    
+    .customer-details input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    #checkout {
+      background-color: #007bff; /* Blue color */
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #checkout:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    #order {
+      background-color: #17a2b8; /* Cyan color */
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #order:hover {
+      background-color: #138496; /* Darker cyan on hover */
+    }
+    
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    #cart-items {
+      list-style: none;
+      padding: 0;
+    }
+
+    #cart-items li {
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Food Delivery Website </h1>
+    <h1>Food Delivery Website</h1>
   </header>
   <div class="menu">
     <div class="item">
-      <img src="Burger.jpg" alt="Burger">
+      <img src="burger.jpg" alt="Burger">
       <h2>Burger</h2>
       <p>Spicy burger with all the fixings.</p>
       <span class="price">₹199</span>
@@ -110,35 +190,34 @@
       <button class="add-to-cart">Add to Cart</button>
     </div>
     <div class="item">
-        <img src="Fried chicken.jpg" alt="Fried chicken">
-        <h2>Fried chicken</h2>
-        <p>A hot and spicy Fried chikcken.</p>
+        <img src="Fried chicken.jpg" alt="Fried Chicken">
+        <h2>Fried Chicken</h2>
+        <p>Crispy and juicy fried chicken.</p>
         <span class="price">₹299</span>
         <button class="add-to-cart">Add to Cart</button>
     </div>
     <div class="item">
         <img src="Pasta.jpg" alt="Pasta">
         <h2>Pasta</h2>
-        <p>A hot and spicy Pasta.</p>
+        <p>A delicious creamy pasta.</p>
         <span class="price">₹199</span>
         <button class="add-to-cart">Add to Cart</button>
     </div>
     <div class="item">
         <img src="Hyderabadi Biryani.jpg" alt="Hyderabadi Biryani">
         <h2>Hyderabadi Biryani</h2>
-        <p>A hot and spicy Hyderabadi Biryani.</p>
+        <p>Rich and aromatic biryani.</p>
         <span class="price">₹399</span>
         <button class="add-to-cart">Add to Cart</button>
     </div>
     <div class="item">
-        <img src="Water bottle.jpg" alt="Water bottle">
-        <h2>Water bottle</h2>
+        <img src="Water Bottle.jpg" alt="Water Bottle">
+        <h2>Water Bottle</h2>
         <span class="price">₹99</span>
         <button class="add-to-cart">Add to Cart</button>
     </div>
+  </div>
 
-    <!-- Add more items here -->
-  
   <div class="cart">
     <h2>Cart</h2>
     <ul id="cart-items"></ul>
@@ -146,7 +225,15 @@
     <button id="checkout" disabled>Checkout</button>
     <button class="clear-cart" id="clear-cart">Clear Cart</button>
   </div>
-  
+
+  <div class="customer-details">
+    <h2>Customer Details</h2>
+    <input type="text" id="customer-name" placeholder="Your Name" required>
+    <input type="text" id="customer-address" placeholder="Your Address" required>
+    <input type="text" id="customer-phone" placeholder="Your Phone Number" required>
+    <button id="order">Order</button>
+  </div>
+
   <script>
     const cartItems = [];
     const cartTotal = document.getElementById('cart-total');
@@ -171,7 +258,10 @@
       let total = 0;
       cartItems.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `₹${item.title} - ₹${item.price.toFixed(2)}`;
+        li.textContent = item.title;
+        const priceSpan = document.createElement('span');
+        priceSpan.textContent = `₹${item.price.toFixed(2)}`;
+        li.appendChild(priceSpan);
         cartList.appendChild(li);
         total += item.price;
       });
@@ -189,6 +279,18 @@
     clearCartButton.addEventListener('click', () => {
       cartItems.length = 0; 
       updateCart(); 
+    });
+
+    document.getElementById('order').addEventListener('click', () => {
+      const name = document.getElementById('customer-name').value;
+      const address = document.getElementById('customer-address').value;
+      const phone = document.getElementById('customer-phone').value;
+
+      if (name && address && phone) {
+        alert(`Order placed successfully!\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nTotal: ₹${cartTotal.textContent}`);
+      } else {
+        alert('Please fill in all customer details before placing your order.');
+      }
     });
   </script>
 </body>
